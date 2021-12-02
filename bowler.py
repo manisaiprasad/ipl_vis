@@ -22,7 +22,7 @@ def init_bowler(server):
 
     # creating the sqlalchemy engine connection to the database
     engine = sqlalchemy.create_engine(
-        "mysql+mysqlconnector://root:12345678@127.0.0.1:3306/ipl_analysis")
+        "mysql://bee3c4026028d2:1ea92be9@us-cdbr-east-04.cleardb.com/heroku_3f0d88f0d7644bf")
 
     #   5.1. For each team you need to give the stadium name(venue) where that team have won the maximum match?
     df = pd.read_sql("select * from matches", engine)
