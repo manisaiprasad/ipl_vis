@@ -5,3 +5,4 @@ SQLAlchemy
 pymysql
 mysql-connector-python
 pyrebase
+gunicorn
