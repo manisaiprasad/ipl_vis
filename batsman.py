@@ -21,7 +21,7 @@ def init_batsman(server):
 
     # creating the sqlalchemy engine connection to the database
     engine = sqlalchemy.create_engine(
-        "mysql://bee3c4026028d2:1ea92be9@us-cdbr-east-04.cleardb.com/heroku_3f0d88f0d7644bf")
+        "mysql://b753801544bc29:0ad83c51@us-cdbr-east-04.cleardb.com/heroku_bbff9bdf965d108")
 
     #   5.1. For each team you need to give the stadium name(venue) where that team have won the maximum match?
     df = pd.read_sql("select * from matches", engine)
@@ -95,7 +95,7 @@ def init_batsman(server):
     # 5.4. For year 2019, you need to show top 10 batsman(rank them according to their total runs scored).
 
     year = '2019'
-    sql_query = "select matches.id,matches.date, ballbyball.batsman, ballbyball.batsman_runs from matches natural join ballbyball where matches.date like '"+year+"%'  "
+    sql_query = "select matches.id,matches.date, ballbyball.batsman, ballbyball.batsman_runs from matches natural join ballbyball where matches.date like '"+year+"______'  "
     year_df = pd.read_sql(sql_query, engine)
     runs = year_df.groupby(['batsman'])['batsman_runs'].sum()
     runs.columns = ['batsman', 'total_runs']
@@ -107,7 +107,7 @@ def init_batsman(server):
     }, title="Top 10 batsmans in the year "+year, color=runs.values, barmode="group")
 
     # 5.5. For year 2019, you need to show top 10 bowlers(rank them according to their total wickets taken).
-    sql_query = "select matches.id,matches.date, ballbyball.bowler, ballbyball.is_wicket from matches natural join ballbyball where matches.date like '"+year+"%'  "
+    sql_query = "select matches.id,matches.date, ballbyball.bowler, ballbyball.is_wicket from matches natural join ballbyball where matches.date like '"+year+"______'  "
     year_df = pd.read_sql(sql_query, engine)
     wickets = year_df.groupby(['bowler'])['is_wicket'].sum()
     wickets.columns = ['bowler', 'total_wickets']
